@@ -39,7 +39,7 @@ class StatusSwitcher extends React.Component {
               </Form.Label>
               <Form.Control placeholder="Type in additional comments" as="textarea" rows={2}/>
             </Form.Group>
-            <Container>
+            <Container className="p-0">
               <Row>
                 <Col>
                   <Button variant="secondary" size="lg" block>Save</Button>

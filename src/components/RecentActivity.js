@@ -4,18 +4,17 @@ import { Table } from 'react-bootstrap';
 const RecentActivity = () => {
   const status = ['Calls', 'Email', 'Break']
   return (
-    <div class="recent-activity">
+    <div className="recent-activity">
       <h1 className="text-primary">
         Recent Activity
       </h1>
       <Table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Status</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Duration</th>
+            <th className="border-top-0">Status</th>
+            <th className="border-top-0">Start Time</th>
+            <th className="border-top-0">End Time</th>
+            <th className="border-top-0">Duration</th>
           </tr>
         </thead>
         <tbody>        
@@ -23,11 +22,10 @@ const RecentActivity = () => {
             const log = randomLog(status)
             return (
               <tr>
-                <td>{log.id}</td>
-                <td>{log.status}</td>
-                <td>{log.start.toLocaleString()}</td>
-                <td>{log.end.toLocaleString()}</td>
-                <td>{log.duration}</td>
+                <td className="border-0">{log.status}</td>
+                <td className="border-0">{log.start.toLocaleString()}</td>
+                <td className="border-0">{log.end.toLocaleString()}</td>
+                <td className="border-0">{log.duration}</td>
               </tr>
             )
           })}

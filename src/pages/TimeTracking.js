@@ -14,6 +14,7 @@ const TimeTracking = () => {
           <StatusSwitcher/>
         </Col>
         <Col md>
+          <br/>
           <RecentActivity/>
         </Col>
       </Row>
