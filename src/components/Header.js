@@ -5,6 +5,8 @@ import '../style/App.css'
 import gloggerLogo from '../imgs/glogger.png'
 import TIlogo from '../imgs/logo.png'
 
+import avatar from '../imgs/profile.png'
+
 const Header = () => {
   return (
     <div className="header">
@@ -13,6 +15,11 @@ const Header = () => {
           <img style={{height: "36px"}} src={TIlogo} alt="Telus International Logo"/> &nbsp;&nbsp;&nbsp;
           <img style={{height: "36px"}} src={gloggerLogo} alt="Glogger Logo"/>
         </Navbar.Brand>
+        <Navbar.Collapse className="justify-content-end">
+          Fabrizzio Rivera
+          &nbsp;&nbsp;&nbsp;
+          <img className="profile-picture" src={avatar} alt="profile"/>
+        </Navbar.Collapse>
       </Navbar>
       <Navbar bg="primary" variant="dark">
         <Nav>

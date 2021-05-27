@@ -23,3 +23,9 @@ body, html {
   transform: translateY(-50%);
   width: 500px;
 }
+
+.profile-picture {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}

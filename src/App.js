@@ -11,6 +11,7 @@ import {
   Route
 } from 'react-router-dom'
 import LandingPage from './pages/LandingPage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" component={LandingPage}/>
         </Switch>
       </Router>
+      <Footer/>
     </div>
   );
 }

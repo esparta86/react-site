@@ -65,7 +65,7 @@ class Timetracking extends React.Component {
               </Col>
               <Col>
                 <b>Sub Group:</b> <br/>
-                IS - GT
+                Web Apps
               </Col>
             </Row>
           </Container>
