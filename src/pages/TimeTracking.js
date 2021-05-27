@@ -6,21 +6,30 @@ import Timetracking from '../components/Timetracking';
 
 const TimeTracking = () => {
 
+  if (!localStorage.getItem('timelog')) {
+    window.location.href = '/'
+  }
+
+
+  const timelog = JSON.parse(localStorage.getItem('timelog'))
+  const timeEntries = timelog.attributes.timeEntries
+  const currentStatus = timeEntries[timeEntries.length - 1].auxCode
+
   return (
     <Container>
       <Row>
         <Col md>
           {localStorage.getItem('timelog') ? 
             <Timetracking
-              startTime={JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].startTimeStamp}
-              currentStatus={JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].auxCode}
+              startTime={timeEntries[timeEntries.length - 1].startTimeStamp}
+              currentStatus={currentStatus}
             /> :
             ''
           }
           <br/>
           <StatusSwitcher
             groupId="7af2c787-87ac-4ba2-bc98-e16a7437a964"
-            currentStatus={localStorage.getItem('timelog') ? JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].auxCode : null}
+            currentStatus={currentStatus}
           />
         </Col>
         <Col md>

@@ -24,4 +24,9 @@ export default class GloggerService {
     const res = await this.axios.post('', body)
     return res ? res.data : null
   }
+
+  async put (itemId, body) {
+    const res = await this.axios.put(`/${itemId}`, body)
+    return res ? res.data : null
+  }
 }

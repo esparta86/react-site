@@ -8,7 +8,6 @@ export default class AuxFlowService extends GloggerService {
   async get(currentAux = null) {
     const url = currentAux ? `/flow/${currentAux}` : '/flow/base'
     const flow = (await this.axios.get(url)).data
-    console.log(flow)
     return flow ? flow.data.nextAuxes.filter(f => f.attributes.active === true) : null
   }
 }

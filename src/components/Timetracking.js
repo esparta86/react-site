@@ -35,7 +35,7 @@ class Timetracking extends React.Component {
 
   tick () {
     this.setState({
-      currentTime: getTimeDifference(new Date(), new Date(JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].startTimeStamp))
+      currentTime: getTimeDifference(new Date(), new Date(this.props.startTime))
     })
   }
 

@@ -18,9 +18,14 @@ const LandingPage = () => {
           <img alt="hero-banner" className="w-100" src={hero}/>
         </Col>
         <Col md>
-          <SessionStarter 
-            groupId="7af2c787-87ac-4ba2-bc98-e16a7437a964"
-          />
+          {
+            localStorage.getItem('timelog') ? 
+             '' :
+            <SessionStarter 
+              groupId="7af2c787-87ac-4ba2-bc98-e16a7437a964"
+            />
+          }
+          
         </Col>
       </Row>
     </Container>

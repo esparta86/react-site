@@ -23,14 +23,14 @@ const RecentActivity = () => {
           {
             timeEntries.map(te => {
               return (
-                <tr>
+                <tr key={te.startTimeStamp}>
                   <td className="border-0">{te.auxName}</td>
                   <td className="border-0">{new Date(te.startTimeStamp).toLocaleString()}</td>
                   <td className="border-0">{te.endTimeStamp ? new Date(te.endTimeStamp).toLocaleString() : '-'}</td>
                   <td className="border-0">
                     {
                       te.endTimeStamp ?
-                      getTimeDifference(new Date(te.startTimeStamp), new Date(te.endTimeStamp)) :
+                      getTimeDifference(new Date(te.endTimeStamp), new Date(te.startTimeStamp)) :
                       'Currently Active'
                     }
                   </td>

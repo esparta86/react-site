@@ -6,7 +6,7 @@ import GloggerService from '../services/GloggerService';
 
 class SessionStarter extends React.Component {
   auxFlowService = new AuxFlowService(this.props.groupId);
-  timeLogService = new GloggerService('/time-tracking/time-logs')  
+  timeLogService = new GloggerService('/time-tracking/time-logs')
   
   constructor(props) {
     super(props)
@@ -49,7 +49,6 @@ class SessionStarter extends React.Component {
         alert(err.message)
       })
     }
-    console.log(formDataObj)
   }
 
   render() {
@@ -74,8 +73,7 @@ class SessionStarter extends React.Component {
             <Form.Group controlId="status">
               <Form.Label>Status</Form.Label>
               <Form.Control name="status" as="select">
-                <option value="0">Continue without status</option>
-                { this.state.auxes.map(a => <option value={a.id}>{a.attributes.name}</option>)}
+                { this.state.auxes.map(a => <option key={a.id} value={a.id}>{a.attributes.name}</option>)}
               </Form.Control>
             </Form.Group>
 
