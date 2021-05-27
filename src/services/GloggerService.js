@@ -11,12 +11,17 @@ export default class GloggerService {
   }
 
   async get (limit = 1000, pagination_token = null) {
-    const res = ((await this.axios.get()).data).data
+    const res = ((await this.axios.get()).data)
     return res ? res.data.filter((a) => a.attributes.active === true) : null
   }
 
   async getItem(itemId) {
     const res = ((await this.axios.get(`/${itemId}`)).data)
+    return res ? res.data : null
+  }
+
+  async post (body) {
+    const res = await this.axios.post('', body)
     return res ? res.data : null
   }
 }

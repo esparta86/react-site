@@ -2,11 +2,17 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import '../style/App.css'
 
+import gloggerLogo from '../imgs/glogger.png'
+import TIlogo from '../imgs/logo.png'
+
 const Header = () => {
   return (
     <div className="header">
       <Navbar bg="light">
-        <Navbar.Brand href="/">Telus International | Global Logger</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img style={{height: "36px"}} src={TIlogo} alt="Telus International Logo"/> &nbsp;&nbsp;&nbsp;
+          <img style={{height: "36px"}} src={gloggerLogo} alt="Glogger Logo"/>
+        </Navbar.Brand>
       </Navbar>
       <Navbar bg="primary" variant="dark">
         <Nav>

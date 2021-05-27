@@ -18,8 +18,8 @@ function App() {
       <Header/>
       <Router>
         <Switch>
-          <Route path="/landing" component={LandingPage}/>
-          <Route path="/" component={TimeTracking}/>
+          <Route path="/timetracking" component={TimeTracking}/>
+          <Route path="/" component={LandingPage}/>
         </Switch>
       </Router>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import GloggerService from '../services/GloggerService';
 
@@ -42,7 +42,7 @@ class StatusSwitcher extends React.Component {
             <Container className="p-0">
               <Row>
                 <Col>
-                  <Button variant="secondary" size="lg" block>Save</Button>
+                  <Button variant="secondary" className="text-light" size="lg" block>Save</Button>
                 </Col>
                 <Col>
                   <Button variant="outline-danger" size="lg" block>Clock Out</Button>
