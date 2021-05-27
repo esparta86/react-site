@@ -23,7 +23,7 @@ class SessionStarter extends React.Component {
     .then(res => {
       const auxes = res;
       this.setState({ auxes });
-    })
+    }).catch(err => alert(err))
   }
 
   onSubmit(e) {

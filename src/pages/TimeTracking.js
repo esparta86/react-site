@@ -10,13 +10,25 @@ const TimeTracking = () => {
     <Container>
       <Row>
         <Col md>
-          <Timetracking/>
+          {localStorage.getItem('timelog') ? 
+            <Timetracking
+              startTime={JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].startTimeStamp}
+              currentStatus={JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].auxCode}
+            /> :
+            ''
+          }
           <br/>
-          <StatusSwitcher/>
+          <StatusSwitcher
+            groupId="0999e495-dd5d-4406-a04b-2b59184d002b"
+            currentStatus={localStorage.getItem('timelog') ? JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].auxCode : null}
+          />
         </Col>
         <Col md>
           <br/>
-          <RecentActivity/>
+          {localStorage.getItem('timelog') ? 
+            <RecentActivity/> :
+            ''
+          }
         </Col>
       </Row>
     </Container>

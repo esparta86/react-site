@@ -1,20 +1,25 @@
 import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import GloggerService from '../services/GloggerService';
-
-const auxesService = new GloggerService('/admin/aux-codes')
+import AuxFlowService from '../services/AuxFlowService';
 
 class StatusSwitcher extends React.Component {
-  state = {
-    auxes: []
+  auxFlowService = new AuxFlowService(this.props.groupId);
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      auxes: []
+    }
   }
 
   componentDidMount() {
-    auxesService.get()
+    this.auxFlowService.get(this.props.currentStatus)
     .then(res => {
       const auxes = res;
       this.setState({ auxes });
     })
+    .catch(err => alert(err))
   }
 
   render() { 

@@ -7,6 +7,7 @@ export default class AuxFlowService extends GloggerService {
   }
   
   async get(currentAux = null) {
+    console.log(currentAux)
     if (currentAux === null) {
       const flow = (await this.axios.get('/flow')).data
       return flow ? flow.data.filter(f => f.attributes.active === true) : null
