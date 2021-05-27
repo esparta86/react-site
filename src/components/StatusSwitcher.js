@@ -35,7 +35,7 @@ class StatusSwitcher extends React.Component {
                 Status
               </Form.Label>
               <Form.Control as="select">
-                { this.state.auxes.map(a => <option value={a.id}>{a.attributes.name}</option>)}
+                { this.state.auxes.map(a => <option value={a.id}>{a.attributes.name}</option>) }
               </Form.Control>
             </Form.Group>
             <Form.Group>

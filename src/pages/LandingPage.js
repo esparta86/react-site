@@ -19,7 +19,7 @@ const LandingPage = () => {
         </Col>
         <Col md>
           <SessionStarter 
-            groupId="0999e495-dd5d-4406-a04b-2b59184d002b"
+            groupId="7af2c787-87ac-4ba2-bc98-e16a7437a964"
           />
         </Col>
       </Row>

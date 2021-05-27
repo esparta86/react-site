@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import GloggerService from '../services/GloggerService';
+import { getTimeDifference } from '../utils/timeDifference';
 
 
 class Timetracking extends React.Component {
@@ -17,7 +18,7 @@ class Timetracking extends React.Component {
 
   componentDidMount () {
     this.setState({
-      currentTime: this.getTimeDifference(new Date(), new Date(this.props.startTime))
+      currentTime: getTimeDifference(new Date(), new Date(this.props.startTime))
     })
 
     this.auxesService.getItem(this.props.currentStatus).then(aux => {
@@ -30,19 +31,11 @@ class Timetracking extends React.Component {
 
   componentWillUnmount () {
     clearInterval(this.timerID)
-  }
- 
-  getTimeDifference (date1, date2) {
-    const diff = (date1 - date2) / 3600000
-    const hours = Math.floor(diff)
-    const minutes = Math.floor((diff - hours) * 60)
-    const seconds = Math.floor((((diff - hours) * 60) - minutes) * 60)
-    return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
-  }
+  }  
 
   tick () {
     this.setState({
-      currentTime: this.getTimeDifference(new Date(), new Date(JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].startTimeStamp))
+      currentTime: getTimeDifference(new Date(), new Date(JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries[0].startTimeStamp))
     })
   }
 

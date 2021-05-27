@@ -3,14 +3,12 @@ import GloggerService from "./GloggerService";
 export default class AuxFlowService extends GloggerService {
   constructor(groupId) {
     super(`/groups/${groupId}`)
-    this.auxCodes = new GloggerService('/admin/aux-codes')
   }
-  
+
   async get(currentAux = null) {
-    console.log(currentAux)
-    if (currentAux === null) {
-      const flow = (await this.axios.get('/flow')).data
-      return flow ? flow.data.filter(f => f.attributes.active === true) : null
-    }
+    const url = currentAux ? `/flow/${currentAux}` : '/flow/base'
+    const flow = (await this.axios.get(url)).data
+    console.log(flow)
+    return flow ? flow.data.nextAuxes.filter(f => f.attributes.active === true) : null
   }
 }
