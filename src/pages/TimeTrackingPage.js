@@ -15,7 +15,7 @@ const TimeTracking = () => {
   const currentStatus = timeEntries[timeEntries.length - 1].auxCode
 
   return (
-    <Container>
+    <Container style={{marginBottom: "65px"}}>
       <Row>
         <Col md>
           {localStorage.getItem('timelog') ? 
