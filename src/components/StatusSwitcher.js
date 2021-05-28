@@ -17,6 +17,7 @@ class StatusSwitcher extends React.Component {
     }
 
     this.onSubmit = this.onSubmit.bind(this)
+    this.clockOut = this.clockOut.bind(this)
   }
 
   componentDidMount() {
@@ -50,8 +51,10 @@ class StatusSwitcher extends React.Component {
   }
 
   clockOut () {
-    localStorage.removeItem('timelog')
-    window.location.href = '/'
+    this.timeLogService.axios.put(`/${this.timelogId}/clockOut`).then(t => {
+      localStorage.removeItem('timelog')
+      window.location.href = '/'
+    }).catch(err => alert(err))
   }
 
   render() { 
