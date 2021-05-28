@@ -7,13 +7,9 @@ import { getTimeDifference } from '../utils/timeDifference';
 class Timetracking extends React.Component {
   auxesService = new GloggerService('/admin/aux-codes')
 
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      currentTime: '',
-      auxName: ''
-    }
+  state = {
+    currentTime: '',
+    auxName: ''
   }
 
   componentDidMount () {

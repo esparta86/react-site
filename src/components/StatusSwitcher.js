@@ -8,13 +8,12 @@ class StatusSwitcher extends React.Component {
   auxFlowService = new AuxFlowService(this.props.groupId);
   timeLogService = new GloggerService('/time-tracking/time-logs')
   timelogId = JSON.parse(localStorage.getItem('timelog')).id
+  state = {
+    auxes: []
+  }
 
   constructor (props) {
     super(props)
-
-    this.state = {
-      auxes: []
-    }
 
     this.onSubmit = this.onSubmit.bind(this)
     this.clockOut = this.clockOut.bind(this)

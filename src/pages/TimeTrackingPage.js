@@ -10,7 +10,6 @@ const TimeTracking = () => {
     window.location.href = '/'
   }
 
-
   const timelog = JSON.parse(localStorage.getItem('timelog'))
   const timeEntries = timelog.attributes.timeEntries
   const currentStatus = timeEntries[timeEntries.length - 1].auxCode

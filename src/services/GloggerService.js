@@ -10,9 +10,17 @@ export default class GloggerService {
     })
   }
 
-  async get (limit = 1000, pagination_token = null) {
-    const res = ((await this.axios.get()).data)
-    return res ? res.data.filter((a) => a.attributes.active === true) : null
+  async get (limit = 1000, pagination_token = null, body = null, onlyActives = true) {
+    const queryParams = {
+      limit: limit, 
+      pagination_token: pagination_token,
+      ...body
+    }
+
+    console.log(queryParams)
+
+    const res = ((await this.axios.get('', { params: queryParams })).data)
+    return res ? res.data.filter((a) => a.attributes.active === true || !onlyActives) : null
   }
 
   async getItem(itemId) {

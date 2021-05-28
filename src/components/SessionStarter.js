@@ -7,13 +7,13 @@ import GloggerService from '../services/GloggerService';
 class SessionStarter extends React.Component {
   auxFlowService = new AuxFlowService(this.props.groupId);
   timeLogService = new GloggerService('/time-tracking/time-logs')
+
+  state = {
+    auxes: []
+  }
   
   constructor(props) {
     super(props)
-
-    this.state = {
-      auxes: []
-    }
 
     this.onSubmit = this.onSubmit.bind(this)
   }
