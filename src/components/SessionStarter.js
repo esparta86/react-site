@@ -66,7 +66,7 @@ class SessionStarter extends React.Component {
             <Form.Group controlId="subgroup">
               <Form.Label>Subgroup</Form.Label>
               <Form.Control name="subgroup" readOnly as="select">
-                <option>IS - GT</option>
+                <option>Web Apps</option>
               </Form.Control>
             </Form.Group>
 

@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import { getTimeDifference } from '../utils/timeDifference';
 
 const RecentActivity = () => {
-  const timeEntries = JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries
+  const timeEntries = JSON.parse(localStorage.getItem('timelog')).attributes.timeEntries.reverse()
 
   return (
     <div className="recent-activity">

@@ -43,9 +43,25 @@ export default class TimeLogDetail extends React.Component {
     }
   }
 
+  getTotal() {
+    const sum = this.state.timeLogs.map(timeLog => 
+      timeLog.attributes.timeEntries.map(timeEntry => {
+        return timeEntry.endTimeStamp ?
+              new Date(timeEntry.endTimeStamp) - new Date(timeEntry.startTimeStamp) :
+              new Date() - new Date(timeEntry.startTimeStamp)
+      }).reduce((acc, prev) => acc + prev)
+    ).reduce((acc, prev) => acc + prev, 0) / 3600000
+
+    const hours = Math.floor(sum)
+    const minutes = Math.floor((sum - hours) * 60)
+    const seconds = Math.floor((((sum - hours) * 60) - minutes) * 60)
+
+    return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
+  }
+
   render() {
     return (
-      <div id="timeLogsDetail">
+      <div id="timeLogsDetail" style={{marginBottom: "65px"}}>
         <Table>
           <thead>
             <tr>
@@ -71,13 +87,13 @@ export default class TimeLogDetail extends React.Component {
                         return (
                           <tr>
                             <td className="border-0">{timeEntry.auxName}</td>
-                            <td className="border-0">{(new Date(timeEntry.startTimeStamp)).toLocaleDateString()}</td>
-                            <td className="border-0">{timeEntry.endTimeStamp ? (new Date(timeEntry.endTimeStamp)).toLocaleDateString() : ''}</td>
+                            <td className="border-0">{(new Date(timeEntry.startTimeStamp)).toLocaleString()}</td>
+                            <td className="border-0">{timeEntry.endTimeStamp ? (new Date(timeEntry.endTimeStamp)).toLocaleString() : 'Currently Active'}</td>
                             <td className="border-0">
                               {
                                 timeEntry.endTimeStamp ?
                                 getTimeDifference(new Date(timeEntry.endTimeStamp), new Date(timeEntry.startTimeStamp)) :
-                                'Currently Active'
+                                getTimeDifference(new Date(), new Date(timeEntry.startTimeStamp))
                               }
                             </td>
                             <td className="border-0">Pending</td>
@@ -85,12 +101,20 @@ export default class TimeLogDetail extends React.Component {
                           </tr>
                         )
                       })
-                    }
-                    
+                    }                    
                   </tbody>
                 )
               })
             }
+            <tr className="border-top-2">
+              <td><b>Total:</b></td>
+              
+              <td/><td/>
+              
+              <td><b>{this.getTotal()}</b></td>
+              
+              <td/><td/>
+            </tr>
         </Table>
       </div>
       
