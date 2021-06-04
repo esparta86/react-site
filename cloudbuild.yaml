@@ -1,0 +1,62 @@
+ steps:
+ # Build the container image
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'gcr.io/ti-is-devenv-01/is-glogger-site:v1', '.']
+   env:
+     - 'ENV_VAR_1=VALUE_1'   
+ # Push the container image to Container Registry
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'gcr.io/ti-is-devenv-01/is-glogger-site:v1']
+ # Deploy container image to Cloud Run
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'is-glogger-site-us-west1'
+   - '--image'
+   - 'gcr.io/ti-is-devenv-01/is-glogger-site:v1'
+   - '--region'
+   - 'us-west1'
+   - '--platform'
+   - 'managed'
+   - '--service-account'
+   - 'glogger-run-identity-sa'   
+   - '--allow-unauthenticated'
+   - '--cpu'
+   - '1'
+   - '--memory'
+   - '2Gi'
+   - '--concurrency'
+   - '251'
+   - '--max-instances'
+   - '2'
+   - '--set-env-vars'
+   - 'ENV_VAR_1=VALUE_1'
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'is-glogger-site-europe-west1'
+   - '--image'
+   - 'gcr.io/ti-is-devenv-01/is-glogger-site:v1'
+   - '--region'
+   - 'europe-west1'
+   - '--platform'
+   - 'managed'
+   - '--service-account'
+   - 'glogger-run-identity-sa'
+   - '--allow-unauthenticated'
+   - '--cpu'
+   - '1'
+   - '--memory'
+   - '2Gi'
+   - '--concurrency'
+   - '251'
+   - '--max-instances'
+   - '3'
+   - '--set-env-vars'
+   - 'ENV_VAR_1=VALUE_1'
+ images:
+ - 'gcr.io/ti-is-devenv-01/is-glogger-site:v1'
